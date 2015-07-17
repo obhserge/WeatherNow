@@ -21,6 +21,4 @@
 @property (nonatomic, strong) NSString* tempMin;
 @property (nonatomic, strong) NSString* tempMax;
 
-- (NSString *)imageName;
-
 @end

@@ -8,16 +8,11 @@
 
 #import "ServerManager.h"
 #import "AFNetworking.h"
-
 #import "WeatherCondition.h"
 
 @interface ServerManager ()
 
 @property (nonatomic, strong) AFHTTPRequestOperationManager* requestOperationManager;
-
-@property (nonatomic, strong, readwrite) CLLocation *currentLocation;
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, assign) BOOL isFirstUpdate;
 
 @end
 

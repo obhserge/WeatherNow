@@ -48,6 +48,7 @@
 		84B6E8B41B567AB100D98056 /* ServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E8B31B567AB100D98056 /* ServerManager.m */; };
 		84B6E8B71B567B7B00D98056 /* WeatherCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E8B61B567B7B00D98056 /* WeatherCondition.m */; };
 		84B6E8BA1B567BD800D98056 /* ServerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6E8B91B567BD800D98056 /* ServerObject.m */; };
+		84D7385F1B59B72400C2841D /* Minsk.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 84D7385E1B59B72400C2841D /* Minsk.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,8 @@
 		84B6E8B61B567B7B00D98056 /* WeatherCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherCondition.m; sourceTree = "<group>"; };
 		84B6E8B81B567BD800D98056 /* ServerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerObject.h; sourceTree = "<group>"; };
 		84B6E8B91B567BD800D98056 /* ServerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerObject.m; sourceTree = "<group>"; };
+		84D7385B1B59B6EB00C2841D /* Vitebsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Vitebsk.gpx; sourceTree = SOURCE_ROOT; };
+		84D7385E1B59B72400C2841D /* Minsk.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Minsk.gpx; sourceTree = "<group>"; };
 		B566CA4D326589EE18C0CD5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +200,7 @@
 				84B6E8B61B567B7B00D98056 /* WeatherCondition.m */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		8493A5941B57F4C400A2991E /* Reachability */ = {
@@ -211,7 +215,6 @@
 		84B6E87E1B5661C000D98056 = {
 			isa = PBXGroup;
 			children = (
-				844532F81B56C8820024FF61 /* Model */,
 				84B6E8891B5661C000D98056 /* WeatherNow */,
 				84B6E8A31B5661C000D98056 /* WeatherNowTests */,
 				84B6E8881B5661C000D98056 /* Products */,
@@ -232,6 +235,7 @@
 		84B6E8891B5661C000D98056 /* WeatherNow */ = {
 			isa = PBXGroup;
 			children = (
+				844532F81B56C8820024FF61 /* Model */,
 				84B6E88E1B5661C000D98056 /* AppDelegate.h */,
 				84B6E88F1B5661C000D98056 /* AppDelegate.m */,
 				84B6E8911B5661C000D98056 /* ViewController.h */,
@@ -254,6 +258,8 @@
 				844532F71B56C8680024FF61 /* Images */,
 				84B6E88B1B5661C000D98056 /* Info.plist */,
 				84B6E88C1B5661C000D98056 /* main.m */,
+				84D7385E1B59B72400C2841D /* Minsk.gpx */,
+				84D7385B1B59B6EB00C2841D /* Vitebsk.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				844532E31B56C84B0024FF61 /* weather-few-night@2x.png in Resources */,
 				844532F11B56C84B0024FF61 /* weather-shower@2x.png in Resources */,
 				84B6E89B1B5661C000D98056 /* LaunchScreen.xib in Resources */,
+				84D7385F1B59B72400C2841D /* Minsk.gpx in Resources */,
 				844532EE1B56C84B0024FF61 /* weather-scattered.png in Resources */,
 				844532F01B56C84B0024FF61 /* weather-shower.png in Resources */,
 				844532EA1B56C84B0024FF61 /* weather-rain-night.png in Resources */,

@@ -12,8 +12,8 @@
 @interface ViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager* locationManager;
-@property (nonatomic, strong) UIImageView *backgroundImageView;
-@property (nonatomic, strong) UIImageView *blurredImageView;
+@property (nonatomic, strong) UIImageView* backgroundImageView;
+@property (nonatomic, strong) UIImageView* blurredImageView;
 @property (nonatomic, assign) CGFloat screenHeight;
 
 @end

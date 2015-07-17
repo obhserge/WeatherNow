@@ -7,10 +7,13 @@
 //
 
 #import "ViewController.h"
+// ServerManager
 #import "ServerManager.h"
+// Blur
 #import "UIImageView+LBBlurredImage.h"
+// Reachability
 #import "Reachability.h"
-
+// Model
 #import "WeatherCondition.h"
 
 @interface ViewController ()
@@ -24,8 +27,7 @@
 @property (nonatomic, strong) UIImageView* iconView;
 @property (nonatomic, strong) UIButton* refreshButton;
 @property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
-
-@property (nonatomic, strong) Reachability *internetReachableFoo;
+@property (nonatomic, strong) Reachability* internetReachableFoo;
 
 @end
 
@@ -33,8 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // ** Don't forget to add NSLocationWhenInUseUsageDescription in MyApp-Info.plist and give it a string
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -47,7 +47,7 @@
     }
     
     // задаем фон
-    UIImage *background = [UIImage imageNamed:@"bg"];
+    UIImage* background = [UIImage imageNamed:@"bg"];
     self.backgroundImageView = [[UIImageView alloc] initWithImage:background];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.backgroundImageView];
@@ -66,16 +66,14 @@
     CGRect temperatureFrame = CGRectMake(inset, headerFrame.size.height - temperatureHeight - hiloHeight, headerFrame.size.width - 2*inset, temperatureHeight);
     CGRect iconFrame = CGRectMake(inset, temperatureFrame.origin.y - iconHeight, iconHeight, iconHeight);
     CGRect conditionsFrame = iconFrame;
-    // make the conditions text a little smaller than the view
-    // and to the right of our icon
+
     conditionsFrame.size.width = self.view.bounds.size.width - 2*inset - iconHeight - 10;
     conditionsFrame.origin.x = iconFrame.origin.x + iconHeight + 10;
     
-    UIView *header = [[UIView alloc] initWithFrame:headerFrame];
+    UIView* header = [[UIView alloc] initWithFrame:headerFrame];
     header.backgroundColor = [UIColor clearColor];
-    //self.tableView.tableHeaderView = header;
     
-    // bottom left
+    // температура
     self.temperatureLabel = [[UILabel alloc] initWithFrame:temperatureFrame];
     self.temperatureLabel.backgroundColor = [UIColor clearColor];
     self.temperatureLabel.textColor = [UIColor whiteColor];
@@ -83,7 +81,7 @@
     self.temperatureLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:120];
     [self.view addSubview:self.temperatureLabel];
     
-    // bottom left
+    // температура максимальная/минимальная
     self.hiloLabel = [[UILabel alloc] initWithFrame:hiloFrame];
     self.hiloLabel.backgroundColor = [UIColor clearColor];
     self.hiloLabel.textColor = [UIColor whiteColor];
@@ -98,7 +96,7 @@
     [self.refreshButton addTarget:self action:@selector(refreshWeather) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.refreshButton];
     
-    // top
+    // название города и страна
     self.cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 30)];
     self.cityLabel.backgroundColor = [UIColor clearColor];
     self.cityLabel.textColor = [UIColor whiteColor];
@@ -107,29 +105,30 @@
     self.cityLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.cityLabel];
     
+    // состояние погоды
     self.conditionsLabel = [[UILabel alloc] initWithFrame:conditionsFrame];
     self.conditionsLabel.backgroundColor = [UIColor clearColor];
     self.conditionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
     self.conditionsLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:self.conditionsLabel];
     
-    // bottom left
+    // иконка
     self.iconView = [[UIImageView alloc] initWithFrame:iconFrame];
     
     self.iconView.contentMode = UIViewContentModeScaleAspectFit;
     self.iconView.backgroundColor = [UIColor clearColor];
-    //[self.iconView setBackgroundColor:[UIColor greenColor]];
-    //self.iconView.image = [UIImage imageNamed:@"weather-clear"];
 
     [self.view addSubview:self.iconView];
     
+    // поиск, где мы
     [self findCurrentLocation];
     
 }
 
 
-# pragma mark - Settings
+#pragma mark - Settings
 
+// белый статус бар
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
@@ -139,6 +138,7 @@
 
 - (void)findCurrentLocation {
     
+    // меняем кпоку рефреша на индикатор
     [self replaceRefreshButtonWithActivityIndicator];
     
     self.isFirstUpdate = YES;
@@ -192,6 +192,7 @@
     [[ServerManager sharedManager] getCurrentConditionWithCoordinate:location
                                                            onSuccess:^(WeatherCondition *condition) {
                                                                
+                                                               // данные получили, меняем текст в лэйблах
                                                                self.cityLabel.text = [NSString stringWithFormat:@"%@ (%@)", condition.city, condition.country];
                                                                
                                                                self.temperatureLabel.text = condition.temp;
@@ -229,7 +230,7 @@
         return;
     }
     
-    CLLocation *location = [locations lastObject];
+    CLLocation* location = [locations lastObject];
     
     if (location.horizontalAccuracy > 0) {
         
@@ -247,8 +248,9 @@
             // Интернет есть, делаем запрос
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                NSLog(@"интернет есть!");
+                //NSLog(@"интернет есть!");
                 
+                // вызываем метод getWeatherCondition, который осуществляет запрос
                 [weakSelf getWeatherCondition:location];
                 
             });

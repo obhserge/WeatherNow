@@ -12,10 +12,7 @@
 @class WeatherCondition;
 
 
-@interface ServerManager : NSObject <CLLocationManagerDelegate>
-
-@property (nonatomic, strong, readonly) CLLocation *currentLocation;
-
+@interface ServerManager : NSObject
 
 + (ServerManager*)sharedManager;
 
